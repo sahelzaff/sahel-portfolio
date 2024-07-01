@@ -24,7 +24,7 @@ const Navbar = () => {
     clearTimeout(window.navbarTimeout);
     window.navbarTimeout = setTimeout(() => {
       setIsNavbarVisible(false); // Hide navbar after 5 seconds of inactivity
-    }, 5000); // 5 seconds timeout
+    }, 2000); // 5 seconds timeout
   };
 
   // Function to handle user activity
