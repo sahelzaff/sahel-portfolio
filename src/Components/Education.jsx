@@ -68,7 +68,7 @@ const Education = () => {
                 {/* Left side */}
                 <div className='flex flex-col items-start '  data-aos='fade-right' data-aos-duration="1000" data-aos-once="true">
                     <h2 className="text-[25px] font-outfit font-bold text-[#0d0d0d]" id='left_heading'>Secondary</h2>
-                    <p className="text-[25px] font-outfit font-bold text-[#0d0d0d]" id='left_heading' >2019-2021</p>
+                    <p className="text-[25px] font-outfit font-bold text-[#0d0d0d] whitespace-nowrap" id='left_heading' >2019-2021</p>
                 </div>
                 
 

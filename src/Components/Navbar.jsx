@@ -24,7 +24,7 @@ const Navbar = () => {
     clearTimeout(window.navbarTimeout);
     window.navbarTimeout = setTimeout(() => {
       setIsNavbarVisible(false); // Hide navbar after 5 seconds of inactivity
-    }, 5000); // 5 seconds timeout
+    }, 2000); // 5 seconds timeout
   };
 
   // Function to handle user activity
@@ -33,7 +33,7 @@ const Navbar = () => {
     clearTimeout(window.navbarTimeout); // Clear the previous timeout
     window.navbarTimeout = setTimeout(() => {
       setIsNavbarVisible(false); // Hide navbar after 5 seconds of inactivity
-    }, 5000); // 5 seconds timeout
+    }, 2000); // 5 seconds timeout
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Navbar = () => {
         className={`bg-white w-full z-20 top-0 start-0 ${isNavbarFixed ? 'fixed-navbar' : ''} ${isNavbarVisible ? 'navbar-visible' : 'navbar-hidden'}`}
       >
         <div className="max-w-screen-2xl flex items-center justify-between mx-auto p-4" id="Navbar_main">
-          <a href="http://localhost:5173/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <a href="https://sahelzaffar-portfolio.netlify.app/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src={assets.Full_logo_yellow} className="w-2/5 transition-transform duration-300 hover:scale-125" id="nav_logo" alt="Logo" />
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

@@ -84,7 +84,7 @@ const Contact = () => {
                         <p className='font-poppins text-[16px] text-gray-800 font-medium mt-8 pr-14' id='contact_para'  data-aos='fade-up' data-aos-duration="1000" data-aos-once="true">
                             I am passionate about web development, and I'm always open to new opportunities and collaborations. Let’s create something amazing together!
                         </p>
-                        <div className='pt-20 flex flex-row items-center gap-3'>
+                        <div className='py-20 flex flex-row items-center gap-3'>
                             <div className='h-20 w-[8px] bg-white' data-aos='fade-right' data-aos-duration="1000" data-aos-once="true"></div>
                             <p className='font-poppins text-[26px] text-black font-bold pr-14' id='contact_quote'  data-aos='fade-left' data-aos-duration="1000" data-aos-once="true"  >
                                 Let's turn your ideas into reality—reach out and let's get started!
