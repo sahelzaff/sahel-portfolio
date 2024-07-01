@@ -258,6 +258,7 @@
     
 }
 @media only screen and (max-width: 600px) {
+   
     #nav_btn{
         height: 40px;
         width: 150px;
@@ -356,7 +357,7 @@
     }
     
     #skills_grid.hide-partial {
-        max-height: calc(150vh - 180px);
+        max-height: calc(150vh - 80px);
         overflow: hidden;
     }
     
