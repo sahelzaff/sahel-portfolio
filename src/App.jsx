@@ -1,5 +1,3 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Hero from './Components/Hero';
@@ -12,18 +10,18 @@ import Footer from './Components/Footer';
 
 const App = () => {
   return (
-    <Router>
-      <div className='overflow-x-hidden'>
-        <Navbar />
+    <div className='app-shell overflow-x-hidden'>
+      <Navbar />
+      <main>
         <Hero />
         <About />
         <Skills />
         <Education />
         <Projects />
         <Contact />
-        <Footer />
-      </div>
-    </Router>
+      </main>
+      <Footer />
+    </div>
   );
 };
 
