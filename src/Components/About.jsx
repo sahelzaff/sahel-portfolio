@@ -62,10 +62,10 @@ const About = () => {
 
           <div ref={copyRef}>
             <p className='text-black text-[16px] font-poppins font-medium leading-[25px] pr-20 mt-4' id='about_para'>
-              I am a dedicated Full Stack Web Developer passionate about designing and building compelling websites and web applications. With a solid foundation from my Bachelor&apos;s degree in Information Technology from Amity University in Mumbai, I bring expertise in creating responsive, user-friendly interfaces and robust backend solutions. Currently freelancing, I am eager to transition into a full-time role where I can contribute my skills and creativity to impactful projects.
+              I am a dedicated Systems & Desktop Support Engineer passionate about designing, maintaining, and optimizing reliable IT infrastructure. With a solid foundation from my Bachelor&apos;s degree in Information Technology from Amity University in Mumbai, I bring expertise in system administration, hardware troubleshooting, desktop engineering, and end-user IT support across Windows and Linux environments.
             </p>
             <p className='text-black text-[16px] font-poppins font-medium leading-[25px] pr-20 mt-4' id='about_para'>
-              I combine technical proficiency with a keen eye for design, ensuring every project I undertake meets high standards of functionality and aesthetics. If you&apos;re looking for a developer who can deliver seamless digital experiences, let&apos;s connect.
+              I combine technical proficiency with a problem-solving mindset, ensuring every system I manage runs at peak performance with minimal downtime. Currently freelancing, I am eager to transition into a full-time role where I can contribute my skills in IT support, network management, and desktop engineering to a forward-thinking organization. If you&apos;re looking for an engineer who keeps your infrastructure running seamlessly, let&apos;s connect.
             </p>
           </div>
 
