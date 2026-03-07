@@ -1,8 +1,10 @@
-import { AutomateIcon, DeployIcon, SecureIcon, ToolIcon } from "@/components/icons";
+import { AutomateIcon, DeployIcon, SecureIcon } from "@/components/icons";
+import { HeroTerminal } from "@/components/hero-terminal";
 import { LoaderScreen } from "@/components/loader-screen";
 import { MobileNav } from "@/components/mobile-nav";
 import { ProjectList } from "@/components/project-list";
 import { ScrollEffects } from "@/components/scroll-effects";
+import { ToolsGrid } from "@/components/tools-grid";
 import {
   aboutFacts,
   contactInfo,
@@ -96,8 +98,8 @@ export default function Home() {
           <div className="hero-grid pointer-events-none absolute inset-x-[8%] inset-y-0 hidden md:block" />
           <div className="hero-orb pointer-events-none absolute left-[18%] top-[18%] h-[42rem] w-[42rem] -translate-x-1/2 rounded-full" />
 
-          <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-[1400px] flex-col justify-between">
-            <div className="hero-copy relative max-w-[58rem]">
+          <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-[1400px] flex-col justify-between lg:relative">
+            <div className="hero-copy relative max-w-[58rem] lg:max-w-[55%]">
               <div className="hero-status mb-8 flex items-start justify-between gap-6 max-md:flex-col max-md:items-start sm:mb-10">
                 <div className="max-w-[18rem] font-mono text-[0.62rem] uppercase tracking-[0.24em] text-teal sm:max-w-none sm:text-[0.72rem] sm:tracking-[0.32em]">
                   IT Support Engineer → Desktop Engineer
@@ -152,8 +154,12 @@ export default function Home() {
               </div>
             </div>
 
+            <div className="mt-10 md:mt-12 lg:absolute lg:right-0 lg:top-0 lg:mt-0 lg:w-[34rem] xl:w-[38rem]">
+              <HeroTerminal />
+            </div>
+
             <div className="hero-stats mt-12 border-t border-white/10 pt-6 sm:mt-16 sm:pt-8">
-              <div className="grid gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-4">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:gap-8 xl:grid-cols-4">
                 {heroStats.map((stat) => (
                   <div key={stat.label}>
                     <div
@@ -289,19 +295,7 @@ export default function Home() {
               <div className="eyebrow">Tools I live in</div>
             </div>
 
-            <div className="grid auto-rows-[minmax(9rem,auto)] gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {tools.map((tool) => (
-                <div
-                  key={tool.name}
-                  data-reveal="up"
-                  className={`border border-white/8 bg-ink/55 p-5 transition-all duration-200 hover:border-teal hover:shadow-[0_0_24px_rgba(0,229,204,0.08)] ${tool.tall ? "xl:row-span-2" : ""}`}
-                >
-                  <ToolIcon icon={tool.icon} className="h-10 w-10 text-teal/80 transition-colors duration-200" />
-                  <div className="mt-10 font-mono text-[0.82rem] uppercase tracking-[0.16em] text-paper">{tool.name}</div>
-                  <div className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-paper/45">{tool.category}</div>
-                </div>
-              ))}
-            </div>
+            <ToolsGrid items={tools} />
           </div>
         </section>
 
@@ -326,16 +320,20 @@ export default function Home() {
               </p>
 
               <div data-reveal="up" className="mt-8 grid gap-3 sm:mt-10 sm:flex sm:flex-wrap sm:gap-4">
-                <a href={`mailto:${contactInfo.email}`} className="button-dark">✉ Send an Email</a>
-                <a href={cvLink} className="button-dark" {...cvProps}>↓ {cvLabel}</a>
+                <a href={`mailto:${contactInfo.email}`} className="button-dark">{"✉ Send an Email"}</a>
+                <a href={cvLink} className="button-dark" {...cvProps}>{"↓ "}{cvLabel}</a>
                 <a href={contactInfo.linkedin} className="button-dark" target="_blank" rel="noreferrer">in LinkedIn</a>
-                <a href={contactInfo.github} className="button-dark" target="_blank" rel="noreferrer">◆ GitHub</a>
+                <a href={contactInfo.github} className="button-dark" target="_blank" rel="noreferrer">{"◆ GitHub"}</a>
               </div>
             </div>
 
             <div data-reveal="up" className="mt-14 flex flex-col gap-4 border-t border-ink/20 pt-6 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-ink/70 md:mt-16 md:flex-row md:items-center md:justify-between md:text-[0.76rem] md:tracking-[0.2em]">
-              <div>Mumbai, Maharashtra · India</div>
-              <div>© 2026 Sahel</div>
+              <div>{"Mumbai, Maharashtra · India"}</div>
+              <div className="flex items-center gap-2 text-left md:text-right">
+                <span>Made by Sahel with</span>
+                <span className="text-amber">♥</span>
+                <span>{"in India copyright all right reserved @2026"}</span>
+              </div>
             </div>
           </div>
         </section>

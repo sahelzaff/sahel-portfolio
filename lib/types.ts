@@ -54,6 +54,8 @@ export type ToolItem = {
     | "git"
     | "windows";
   tall?: boolean;
+  featured?: boolean;
+  wide?: boolean;
 };
 
 export type KvItem = {

@@ -282,6 +282,72 @@ button {
   animation: blink-caret 0.8s steps(1, end) infinite;
 }
 
+.terminal-shell {
+  transform: rotate(2deg);
+}
+
+.terminal-float {
+  animation: terminal-float 6s ease-in-out infinite;
+}
+
+.terminal-glow {
+  animation: terminal-glow 6s ease-in-out infinite;
+}
+
+.terminal-badge {
+  position: absolute;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(0, 229, 204, 0.18);
+  background: rgba(8, 12, 12, 0.72);
+  padding: 0.55rem 0.8rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232, 237, 233, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.terminal-badge-top {
+  right: -1.5rem;
+  top: 2.2rem;
+}
+
+.terminal-badge-bottom {
+  bottom: 2rem;
+  left: -1.6rem;
+}
+
+.terminal-badge-dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 999px;
+}
+
+.terminal-dash {
+  position: absolute;
+  border-color: rgba(0, 229, 204, 0.16);
+  border-style: dashed;
+  z-index: 2;
+}
+
+.terminal-dash-top {
+  right: 7.4rem;
+  top: 3.7rem;
+  width: 4rem;
+  border-top-width: 1px;
+}
+
+.terminal-dash-bottom {
+  bottom: 3.5rem;
+  left: 5.8rem;
+  width: 4.5rem;
+  border-top-width: 1px;
+}
+
 @keyframes pulse-orb {
   0%,
   100% {
@@ -319,6 +385,28 @@ button {
   50.01%,
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes terminal-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes terminal-glow {
+  0%,
+  100% {
+    opacity: 0.38;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 0.62;
+    transform: scale(1);
   }
 }
 
@@ -376,6 +464,32 @@ button {
   .marquee-item {
     font-size: 0.74rem;
     letter-spacing: 0.18em;
+  }
+
+  .terminal-shell {
+    max-width: 100%;
+    transform: rotate(1deg);
+  }
+
+  .terminal-badge-top {
+    right: 0.75rem;
+    top: -1rem;
+  }
+
+  .terminal-badge-bottom {
+    bottom: -1rem;
+    left: 0.75rem;
+  }
+
+  .terminal-dash-top,
+  .terminal-dash-bottom {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .terminal-shell {
+    width: min(100%, 38rem);
   }
 }
 

@@ -64,11 +64,11 @@ export const skillPillars: SkillPillar[] = [
 ];
 
 export const skillBars: SkillBar[] = [
-  { label: "PowerShell", value: 92 },
-  { label: "Microsoft Intune / SCCM", value: 88 },
-  { label: "Active Directory / Entra ID", value: 85 },
+  { label: "PowerShell", value: 82 },
+  { label: "Microsoft Intune / SCCM", value: 92 },
+  { label: "Active Directory / Entra ID", value: 86 },
   { label: "Python", value: 78 },
-  { label: "Windows Server / GPO", value: 82 },
+  { label: "Windows Server / GPO", value: 90 },
   { label: "Node.js / Tooling", value: 70 },
 ];
 
@@ -136,15 +136,15 @@ export const projects: ProjectItem[] = [
 ];
 
 export const tools: ToolItem[] = [
-  { name: "PowerShell 7", category: "Automation", icon: "powershell", tall: true },
-  { name: "Python 3", category: "Scripting", icon: "python" },
+  { name: "PowerShell 7", category: "Automation", icon: "powershell", tall: true, featured: true },
+  { name: "Python 3", category: "Scripting", icon: "python", wide: true },
   { name: "VS Code", category: "Editor", icon: "vscode" },
   { name: "Node.js", category: "Backend / CLI", icon: "node" },
-  { name: "Intune", category: "MDM", icon: "intune" },
+  { name: "Intune", category: "MDM", icon: "intune", featured: true },
   { name: "SCCM", category: "Deployment", icon: "sccm", tall: true },
   { name: "Azure AD", category: "Identity", icon: "azure" },
-  { name: "Autopilot", category: "Zero-Touch", icon: "autopilot" },
-  { name: "Defender", category: "Security", icon: "defender" },
+  { name: "Autopilot", category: "Zero-Touch", icon: "autopilot", wide: true },
+  { name: "Defender", category: "Security", icon: "defender", featured: true },
   { name: "ServiceNow", category: "ITSM", icon: "servicenow" },
   { name: "Git", category: "Version Control", icon: "git" },
   { name: "Windows Server", category: "Infrastructure", icon: "windows", tall: true },
