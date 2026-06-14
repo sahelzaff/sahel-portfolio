@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
@@ -35,6 +35,10 @@ export const metadata: Metadata = {
   title: "Sahel | Systems That Work",
   description:
     "Portfolio of Sahel Zaffarulla — IT Lead running multi-country infrastructure, cloud, networking, and endpoint operations for an international shipping group. Automation-first. Azure-certified.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#04080F",
 };
 
 export default function RootLayout({
