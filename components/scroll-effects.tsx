@@ -118,27 +118,87 @@ export function ScrollEffects() {
           ? { opacity: 0, x: -60 }
           : direction === "right"
             ? { opacity: 0, x: 60 }
-            : { opacity: 0, y: 40 };
+            : direction === "scale"
+              ? { opacity: 0, y: 36, scale: 0.92 }
+              : direction === "blur"
+                ? { opacity: 0, y: 30, filter: "blur(14px)" }
+                : { opacity: 0, y: 40 };
 
       gsap.fromTo(
         element,
         fromVars,
         reducedMotion
-          ? { opacity: 1, x: 0, y: 0, duration: 0.01 }
+          ? { opacity: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)", duration: 0.01 }
           : {
               opacity: 1,
               x: 0,
               y: 0,
-              duration: 0.8,
+              scale: 1,
+              filter: "blur(0px)",
+              duration: 0.9,
               ease: "power3.out",
               scrollTrigger: {
                 trigger: element,
-                start: "top 80%",
+                start: "top 82%",
                 once: true,
               },
             },
       );
     });
+
+    // Parallax — elements drift at their own data-parallax speed while scrolling through view.
+    if (!reducedMotion) {
+      gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((element) => {
+        const speed = Number(element.dataset.parallax ?? "0.2");
+        gsap.fromTo(
+          element,
+          { yPercent: -speed * 50 },
+          {
+            yPercent: speed * 50,
+            ease: "none",
+            scrollTrigger: {
+              trigger: element,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          },
+        );
+      });
+
+      // Hero orb drifts down as the hero scrolls away.
+      const orb = document.querySelector(".hero-orb");
+      if (orb) {
+        gsap.to(orb, {
+          yPercent: 28,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+
+      // Section headings settle in with a gentle clip-reveal sweep.
+      gsap.utils.toArray<HTMLElement>(".section-shell h2").forEach((heading) => {
+        gsap.fromTo(
+          heading,
+          { clipPath: "inset(0 100% 0 0)" },
+          {
+            clipPath: "inset(0 0% 0 0)",
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: heading,
+              start: "top 85%",
+              once: true,
+            },
+          },
+        );
+      });
+    }
 
     gsap.utils.toArray<HTMLElement>(".skill-bar-fill").forEach((bar, index) => {
       const target = Number(bar.dataset.value ?? "0") / 100;
@@ -160,25 +220,6 @@ export function ScrollEffects() {
             },
       );
     });
-
-    const watermark = document.querySelector(".about-watermark");
-    if (watermark && !reducedMotion) {
-      gsap.fromTo(
-        watermark,
-        { opacity: 0.15, y: 80 },
-        {
-          opacity: 0.32,
-          y: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#about",
-            start: "top bottom",
-            end: "top center",
-            scrub: true,
-          },
-        },
-      );
-    }
 
     const progressBar = document.querySelector("#progress-bar");
     if (progressBar) {
@@ -291,6 +332,17 @@ export function ScrollEffects() {
 
       window.addEventListener("mousemove", moveCursor);
       cursorFrame = window.requestAnimationFrame(animateRing);
+
+      // Attitude indicator — horizon line tilts ±1.5° with vertical mouse position
+      const horizon = document.querySelector<HTMLElement>(".hero-horizon");
+      if (horizon) {
+        const onHorizonMove = (event: MouseEvent) => {
+          const vy = (event.clientY / window.innerHeight - 0.5) * 2;
+          horizon.style.transform = `rotate(${vy * 1.5}deg)`;
+        };
+        window.addEventListener("mousemove", onHorizonMove);
+        cleanup.push(() => window.removeEventListener("mousemove", onHorizonMove));
+      }
 
       cleanup.push(() => {
         window.removeEventListener("mousemove", moveCursor);

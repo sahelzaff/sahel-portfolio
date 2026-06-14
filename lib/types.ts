@@ -63,6 +63,29 @@ export type KvItem = {
   value: string;
 };
 
+export type ExperienceItem = {
+  role: string;
+  org: string;
+  location: string;
+  period: string;
+  current?: boolean;
+  summary: string;
+};
+
+export type EducationItem = {
+  degree: string;
+  school: string;
+  period: string;
+  meta: string;
+  note?: string;
+};
+
+export type CertItem = {
+  code: string;
+  name: string;
+  issuer: string;
+};
+
 export type SectionHeading = {
   number: string;
   label: string;

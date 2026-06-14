@@ -3,11 +3,25 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const bootLines = [
-  "> initialising sahel.exe...",
-  "> loading systems [████████████] 100%",
-  "> ready.",
+type LineType = "title" | "blank" | "online" | "cleared";
+
+type BootLine = {
+  text: string;
+  type: LineType;
+};
+
+const bootSequence: BootLine[] = [
+  { text: "◈  FLIGHT DECK v1.0  //  SAHEL ZAFFAR", type: "title" },
+  { text: "", type: "blank" },
+  { text: "SYS: ENDPOINT MANAGEMENT ........ ONLINE", type: "online" },
+  { text: "SYS: AUTOMATION ENGINE ........... ONLINE", type: "online" },
+  { text: "SYS: IDENTITY SERVICES ........... ONLINE", type: "online" },
+  { text: "SYS: SECURITY BASELINE ........... ONLINE", type: "online" },
+  { text: "", type: "blank" },
+  { text: "▸  CLEARED FOR TAKEOFF", type: "cleared" },
 ];
+
+const lineDelays = [0, 180, 380, 560, 720, 880, 1040, 1260];
 
 export function LoaderScreen() {
   const [visible, setVisible] = useState(true);
@@ -16,20 +30,21 @@ export function LoaderScreen() {
   useEffect(() => {
     document.body.dataset.loaded = "false";
 
-    const lineTimers = bootLines.map((_, index) =>
+    const timers: number[] = [];
+
+    lineDelays.forEach((delay, index) => {
+      timers.push(window.setTimeout(() => setLineCount(index + 1), delay));
+    });
+
+    timers.push(
       window.setTimeout(() => {
-        setLineCount(index + 1);
-      }, 220 + index * 320),
+        document.body.dataset.loaded = "true";
+        setVisible(false);
+      }, 2000),
     );
 
-    const doneTimer = window.setTimeout(() => {
-      document.body.dataset.loaded = "true";
-      setVisible(false);
-    }, 1550);
-
     return () => {
-      lineTimers.forEach((timer) => window.clearTimeout(timer));
-      window.clearTimeout(doneTimer);
+      timers.forEach((t) => window.clearTimeout(t));
       document.body.dataset.loaded = "true";
     };
   }, []);
@@ -40,13 +55,16 @@ export function LoaderScreen() {
         <motion.div
           initial={{ y: 0 }}
           exit={{ y: "-100%" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[120] flex items-center justify-center bg-ink"
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="loader-shell"
         >
-          <div className="w-full max-w-[38rem] px-6 font-mono text-[0.92rem] uppercase tracking-[0.18em] text-teal sm:text-base">
-            {bootLines.slice(0, lineCount).map((line) => (
-              <div key={line} className="mb-4">
-                {line}
+          <div className="loader-content">
+            {bootSequence.slice(0, lineCount).map((line, index) => (
+              <div key={index} className={`loader-line loader-line-${line.type}`}>
+                {line.text}
+                {index === lineCount - 1 && line.type !== "blank" && (
+                  <span className="blink-cursor ml-1">█</span>
+                )}
               </div>
             ))}
           </div>

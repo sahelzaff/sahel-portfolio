@@ -1,4 +1,7 @@
 import type {
+  CertItem,
+  EducationItem,
+  ExperienceItem,
   KvItem,
   NavItem,
   ProjectItem,
@@ -9,40 +12,105 @@ import type {
 } from "@/lib/types";
 
 export const navItems: NavItem[] = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#work", label: "Work" },
-  { href: "#tools", label: "Tools" },
-  { href: "#contact", label: "Contact" },
+  { href: "#dossier", label: "Dossier" },
+  { href: "#record", label: "Record" },
+  { href: "#skills", label: "Instruments" },
+  { href: "#missions", label: "Missions" },
+  { href: "#tools", label: "Loadout" },
+  { href: "#contact", label: "Control" },
 ];
 
 export const contactInfo = {
-  email: "sahelzaffar2@gmail.com",
+  email: "sahelzaffarwork@gmail.com",
   cvHref: "/sahel-resume-2026.pdf",
   linkedin: "https://www.linkedin.com/in/sahel-zaffar-880074288/",
   github: "https://github.com/sahelzaff",
 };
 
 export const heroStats: StatItem[] = [
-  { value: 4, suffix: "+", label: "Years in IT Support" },
-  { value: 500, suffix: "+", label: "Endpoints Managed" },
-  { value: 30, suffix: "+", label: "Scripts Deployed" },
+  { value: 4, suffix: "+", label: "Years in IT" },
+  { value: 4, label: "Countries Operated" },
+  { value: 400, suffix: "+", label: "Mailboxes Migrated" },
   { value: 99.9, suffix: "%", decimals: 1, label: "Uptime Maintained" },
 ];
 
 export const marqueeRows = [
   ["POWERSHELL", "PYTHON", "NODE.JS", "INTUNE", "SCCM", "ACTIVE DIRECTORY", "AZURE AD", "AUTOPILOT"],
-  ["DESKTOP ENGINEERING", "ENDPOINT MANAGEMENT", "GPO", "WSUS", "SCRIPTING", "AUTOMATION", "M365"],
+  ["IT LEADERSHIP", "CLOUD MIGRATION", "IP TELEPHONY", "GPO", "SCRIPTING", "AUTOMATION", "M365", "MULTI-SITE OPS"],
 ];
 
 export const aboutFacts: KvItem[] = [
-  { label: "Currently", value: "IT Support Engineer" },
-  { label: "Targeting", value: "Desktop / Systems Engineer" },
-  { label: "Stack", value: "PowerShell · Python · Node.js" },
-  { label: "MDM", value: "Intune · SCCM · WDS · MDT" },
+  { label: "Currently", value: "IT Lead — IGM Shipping Pvt. Ltd." },
+  { label: "Focus", value: "Infrastructure · Cloud · Multi-Site Ops" },
+  { label: "Stack", value: "PowerShell · Python · Azure · M365" },
+  { label: "MDM", value: "Intune · SCCM · WDS · MDT · Autopilot" },
   { label: "Identity", value: "Active Directory · Azure AD · Entra ID" },
-  { label: "Location", value: "Mumbai, Maharashtra" },
-  { label: "Availability", value: "Open — Actively Looking" },
+  { label: "Education", value: "B.Sc Information Technology — Amity University (CGPA 7.8)" },
+  { label: "Certs", value: "AZ-305 · AZ-204 · AZ-104 · AZ-900 · MS-102" },
+  { label: "Languages", value: "English · Hindi · Marathi" },
+  { label: "Location", value: "New Panvel, Maharashtra" },
+  { label: "Availability", value: "Employed — Open to Senior Roles" },
+];
+
+export const experience: ExperienceItem[] = [
+  {
+    role: "IT Lead",
+    org: "IGM Shipping Pvt. Ltd. (Interglobe Marine)",
+    location: "Mumbai · India / UAE / Oman / Malaysia",
+    period: "Apr 2026 — Present",
+    current: true,
+    summary:
+      "Sole IT authority for an international shipping group across four countries — infrastructure, networking, security, cloud, telephony, and end-user computing. Reports directly to the MD. Owns email security, multi-site IP telephony rollout, ISP contract negotiation, new-office build-outs, and onboarding automation.",
+  },
+  {
+    role: "Systems Engineer",
+    org: "Medpace Clinical Research Organization",
+    location: "Navi Mumbai, India",
+    period: "Aug 2025 — Apr 2026",
+    summary:
+      "Enterprise identity and endpoint operations across Active Directory, Entra ID, Intune, and Autopilot in a regulated global CRO. Authored PowerShell automation, ran org-wide patching, and earned a name for root-cause analysis on incidents others couldn't isolate.",
+  },
+  {
+    role: "IT Executive (Sole IT Charge)",
+    org: "Goodrich Logistics",
+    location: "Mumbai, India",
+    period: "Jun 2024 — Aug 2025",
+    summary:
+      "First single-owner role. Led a zero-downtime migration of 400+ mailboxes and 2TB+ data to Microsoft 365, designed enterprise identity services, deployed site-to-site networks and firewalls, and stood up an Azure-hosted fault-tolerant telephony platform.",
+  },
+  {
+    role: "Technical Support Engineer",
+    org: "High Tech Birds",
+    location: "Mumbai, India",
+    period: "Mar 2023 — Feb 2024",
+    summary:
+      "Enterprise technical support — directory account operations, hardware lifecycle, and end-user systems — while completing a full-time IT degree. Built the foundation for rapid advancement into infrastructure ownership.",
+  },
+];
+
+export const education: EducationItem[] = [
+  {
+    degree: "B.Sc — Information Technology",
+    school: "Amity University, Mumbai",
+    period: "2021 — 2024",
+    meta: "CGPA 7.8 / 10",
+    note: "Completed alongside full-time IT roles from the first year of the degree.",
+  },
+  {
+    degree: "Senior Secondary (CBSE)",
+    school: "St. Wilfred School, Mumbai",
+    period: "2019 — 2021",
+    meta: "73%",
+  },
+];
+
+export const certifications: CertItem[] = [
+  { code: "AZ-305", name: "Azure Solutions Architect Expert", issuer: "Microsoft" },
+  { code: "MS-102", name: "Microsoft 365 Administrator Expert", issuer: "Microsoft" },
+  { code: "AZ-204", name: "Azure Developer Associate", issuer: "Microsoft" },
+  { code: "AZ-104", name: "Azure Administrator Associate", issuer: "Microsoft" },
+  { code: "AZ-900", name: "Azure Fundamentals", issuer: "Microsoft" },
+  { code: "GOOG", name: "IT Support & Automation", issuer: "Google · Coursera" },
 ];
 
 export const skillPillars: SkillPillar[] = [
@@ -65,11 +133,11 @@ export const skillPillars: SkillPillar[] = [
 
 export const skillBars: SkillBar[] = [
   { label: "PowerShell", value: 82 },
-  { label: "Microsoft Intune / SCCM", value: 92 },
-  { label: "Active Directory / Entra ID", value: 86 },
-  { label: "Python", value: 78 },
+  { label: "Microsoft Intune / SCCM", value: 90 },
+  { label: "Active Directory / Entra ID", value: 88 },
+  { label: "Microsoft 365 / Azure Cloud", value: 85 },
   { label: "Windows Server / GPO", value: 90 },
-  { label: "Node.js / Tooling", value: 70 },
+  { label: "Python", value: 78 },
 ];
 
 export const projects: ProjectItem[] = [

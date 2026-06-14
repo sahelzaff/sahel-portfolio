@@ -34,7 +34,7 @@ const mono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sahel | Systems That Work",
   description:
-    "A blueprint-accurate portfolio for Sahel, an IT Support Engineer with Desktop Engineer depth and an automation-first mindset.",
+    "Portfolio of Sahel Zaffarulla — IT Lead running multi-country infrastructure, cloud, networking, and endpoint operations for an international shipping group. Automation-first. Azure-certified.",
 };
 
 export default function RootLayout({
@@ -43,9 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        suppressHydrationWarning
         className={`${display.variable} ${body.variable} ${mono.variable} bg-ink font-body text-paper antialiased`}
       >
         {children}

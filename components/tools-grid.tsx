@@ -30,11 +30,11 @@ export function ToolsGrid({ items }: ToolsGridProps) {
             <div
               key={tool.name}
               data-reveal="up"
-              className={`border border-white/8 bg-ink/55 p-5 transition-all duration-200 hover:border-teal hover:shadow-[0_0_24px_rgba(0,229,204,0.08)] ${mobileHidden} ${desktopSpan}`}
+              className={`border border-white/6 bg-ink/50 p-5 transition-all duration-200 hover:border-teal/60 hover:shadow-[0_0_28px_rgba(245,160,0,0.09)] ${mobileHidden} ${desktopSpan}`}
             >
-              <ToolIcon icon={tool.icon} className="h-10 w-10 text-teal/80 transition-colors duration-200" />
+              <ToolIcon icon={tool.icon} className="h-10 w-10 text-teal/70" />
               <div className="mt-10 font-mono text-[0.82rem] uppercase tracking-[0.16em] text-paper">{tool.name}</div>
-              <div className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-paper/45">{tool.category}</div>
+              <div className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-paper/40">{tool.category}</div>
             </div>
           );
         })}

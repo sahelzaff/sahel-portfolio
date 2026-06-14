@@ -60,8 +60,8 @@ const scripts: ScriptSequence[] = [
   },
 ];
 
-const typingRange = { min: 30, max: 50 };
-const lineGapMs = 220;
+const typingRange = { min: 28, max: 48 };
+const lineGapMs = 210;
 const holdMs = 2000;
 
 export function HeroTerminal() {
@@ -134,23 +134,23 @@ export function HeroTerminal() {
       <div className="terminal-dash terminal-dash-top" />
       <div className="terminal-dash terminal-dash-bottom" />
 
-      <div className="terminal-glow pointer-events-none absolute inset-x-[8%] bottom-[-3rem] h-24 rounded-full bg-teal/18 blur-3xl" />
+      <div className="terminal-glow pointer-events-none absolute inset-x-[8%] bottom-[-3rem] h-24 rounded-full bg-teal/15 blur-3xl" />
 
-      <div className="terminal-float relative overflow-hidden border border-teal/30 bg-black/40 shadow-[0_24px_80px_rgba(0,229,204,0.12)] backdrop-blur-xl">
-        <div className="flex items-center justify-between border-b border-teal/15 px-4 py-3">
+      <div className="terminal-float relative overflow-hidden border border-teal/28 bg-black/50 shadow-[0_24px_80px_rgba(245,160,0,0.10)] backdrop-blur-xl">
+        <div className="flex items-center justify-between border-b border-teal/12 bg-surface/40 px-4 py-3">
           <div className="flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-teal/45" />
-            <span className="h-2.5 w-2.5 rounded-full bg-teal/65" />
-            <span className="h-2.5 w-2.5 rounded-full bg-teal/85" />
+            <span className="h-2.5 w-2.5 bg-teal/40" />
+            <span className="h-2.5 w-2.5 bg-teal/60" />
+            <span className="h-2.5 w-2.5 bg-teal/80" />
           </div>
-          <div className="font-mono text-[0.64rem] uppercase tracking-[0.18em] text-paper/62">
-            Windows PowerShell — sahel@DESKTOP-ENG
+          <div className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-paper/55">
+            MFD-01 // Endpoint Monitor
             <span className="blink-cursor ml-1">|</span>
           </div>
           <div className="w-10" />
         </div>
 
-        <div className="min-h-[27rem] bg-[linear-gradient(to_bottom,rgba(0,229,204,0.03),transparent_25%)] px-5 py-5 font-mono text-[0.8rem] leading-7 text-paper/82">
+        <div className="min-h-[27rem] bg-[linear-gradient(to_bottom,rgba(245,160,0,0.025),transparent_20%)] px-5 py-5 font-mono text-[0.8rem] leading-7 text-paper/78">
           <pre className="whitespace-pre-wrap break-words">{typedText}</pre>
         </div>
       </div>
