@@ -71,7 +71,9 @@ Tailwind CSS v4. Design tokens are defined with `@theme inline` in `app/globals.
 
 ### Deployment
 
-Push to `main` → GitHub Actions runs lint + typecheck + build → SCP `out/` to EC2 → reload Nginx. Secrets: `EC2_HOST`, `EC2_USER`, `EC2_SSH_KEY`, `DEPLOY_PATH`.
+Hosted on **Netlify**. `netlify.toml` drives it: build `npm run build`, publish `out/`, Node 20. Push to `main` → Netlify auto-builds and deploys. Security headers (CSP, HSTS, X-Frame-Options, etc.) and long-cache rules for `/_next/static/*` + `/fonts/*` are set in `netlify.toml` `[[headers]]` — this is the only place they can live, since a static export emits no headers via `next.config`.
+
+`.github/workflows/ci.yml` runs lint + typecheck + build on push/PR as a pre-merge gate (it does **not** deploy — Netlify does).
 
 ## Design intent
 

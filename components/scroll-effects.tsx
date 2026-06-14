@@ -300,10 +300,22 @@ export function ScrollEffects() {
       let ringX = mouseX;
       let ringY = mouseY;
 
+      // Root carries `zoom` on desktop (≥1280px). These fixed cursors render in
+      // that zoomed space, so divide pointer coords by zoom to track the OS cursor.
+      const readZoom = () => {
+        const z = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("zoom"));
+        return Number.isFinite(z) && z > 0 ? z : 1;
+      };
+      let zoom = readZoom();
+      const onZoomResize = () => {
+        zoom = readZoom();
+      };
+      window.addEventListener("resize", onZoomResize);
+
       const moveCursor = (event: MouseEvent) => {
         mouseX = event.clientX;
         mouseY = event.clientY;
-        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        cursor.style.transform = `translate3d(${mouseX / zoom}px, ${mouseY / zoom}px, 0)`;
       };
 
       const hoverTargets = document.querySelectorAll("a, button, [data-cursor='text']");
@@ -326,7 +338,7 @@ export function ScrollEffects() {
       const animateRing = () => {
         ringX += (mouseX - ringX) * 0.14;
         ringY += (mouseY - ringY) * 0.14;
-        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+        ring.style.transform = `translate3d(${ringX / zoom}px, ${ringY / zoom}px, 0)`;
         cursorFrame = window.requestAnimationFrame(animateRing);
       };
 
@@ -346,6 +358,7 @@ export function ScrollEffects() {
 
       cleanup.push(() => {
         window.removeEventListener("mousemove", moveCursor);
+        window.removeEventListener("resize", onZoomResize);
         window.cancelAnimationFrame(cursorFrame);
         hoverTargets.forEach((target) => {
           target.removeEventListener("mouseenter", onEnter);

@@ -1,9 +1,30 @@
-.next
+# dependencies
 node_modules
+
+# build output
+.next
 out
 dist
+*.tsbuildinfo
+
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# netlify
+.netlify
+
+# local-only assets (source material, not deployed)
+Uploads/
+Sahel_Zaffarulla_Resume_2026_1.md
+
+# os
 .DS_Store
+Thumbs.db

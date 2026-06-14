@@ -1,0 +1,38 @@
+name: CI
+
+# Netlify handles deploys (build on push). This workflow just gates PRs/pushes
+# with lint + typecheck + build so broken code is caught before it reaches main.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    name: Lint, Typecheck, Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type Check
+        run: npm run typecheck
+
+      - name: Build Static Export
+        run: npm run build
